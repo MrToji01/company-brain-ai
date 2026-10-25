@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <title>Company Brain AI</title>
+  <link rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="/" aria-label="Company Brain home">
+        <span class="brand-mark">CB</span>
+        <span>
+          <strong>Company Brain</strong>
+          <small>Company knowledge assistant</small>
+        </span>
+      </a>
+
+      <div class="side-label">WORKSPACE</div>
+      <button class="nav-item active" id="focusChat">
+        <span>✦</span> Ask Company Brain
+      </button>
+      <button class="nav-item" id="newChat">
+        <span>↺</span> New conversation
+      </button>
+
+      <div class="side-label">TRY ASKING</div>
+      <button class="nav-item prompt-link"
+        data-question="Which projects have employees working on them?">
+        <span>⌘</span> Project overview
+      </button>
+      <button class="nav-item prompt-link"
+        data-question="Which department has the highest number of employees?">
+        <span>▥</span> Department insights
+      </button>
+      <button class="nav-item prompt-link"
+        data-question="Which employees work on multiple projects?">
+        <span>◎</span> Find connections
+      </button>
+
+      <div class="sidebar-status">
+        <span class="status-line">
+          <i></i> Backend connection
+        </span>
+        <p id="connectionStatus">Checking backend connection...</p>
+        <button class="small-button" id="checkBackend">
+          Check connection
+        </button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <strong>AI Knowledge Workspace</strong>
+          <small>
+            Search people, projects, departments and company connections
+          </small>
+        </div>
+        <span class="top-pill"><i></i> Company Brain</span>
+      </header>
+
+      <section class="content">
+        <section class="hero" id="hero">
+          <span class="eyebrow">✦ YOUR COMPANY, CONNECTED</span>
+          <h1>
+            Ask better questions.<br>
+            <span>Find the connections.</span>
+          </h1>
+          <p>
+            Ask about employees, projects, departments, bugs and decisions.
+            Company Brain uses your connected graph data to help explain
+            what the records show.
+          </p>
+        </section>
+
+        <section class="suggestions" id="suggestions">
+          <button class="suggestion prompt-card"
+            data-question="Who is Kavya Gupta?">
+            <span class="card-icon">♙</span>
+            <strong>Find an employee</strong>
+            <small>Look up a person, department and assigned projects.</small>
+          </button>
+
+          <button class="suggestion prompt-card"
+            data-question="Show all projects connected to Kavya Gupta.">
+            <span class="card-icon">↗</span>
+            <strong>Explore connections</strong>
+            <small>Follow employee-to-project relationships.</small>
+          </button>
+          <button class="suggestion prompt-card"
+            data-question="Which department has the highest number of employees?">
+            <span class="card-icon">▥</span>
+            <strong>Department insights</strong>
+            <small>Explore patterns and counts in company data.</small>
+          </button>
+          <button class="suggestion prompt-card"
+            data-question="Show all projects along with the employees assigned to each project.">
+          <span class="card-icon">▦</span>
+          <strong>Project overview</strong>
+          <small>Discover projects and the employees assigned to them.</small>
+          </button>
+        </section>
+
+        <section class="chat" id="chat" aria-live="polite"></section>
+
+        <form class="composer" id="questionForm">
+          <textarea
+            id="questionInput"
+            rows="2"
+            placeholder="Ask Company Brain about your company..."
+            aria-label="Your question"
+            required
+          ></textarea>
+
+          <div class="composer-footer">
+            <span>Enter to send · Shift + Enter for a new line</span>
+            <button class="send-button" id="sendButton" type="submit">
+              Ask AI <b>↗</b>
+            </button>
+          </div>
+        </form>
+
+        <p class="disclaimer">
+          AI answers can be incomplete if company graph data is missing.
+          Verify important findings against source records.
+        </p>
+      </section>
+    </main>
+  </div>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
